@@ -1,0 +1,26 @@
+<md-card>
+    <md-card-title>Search By Director</md-card-title>
+    <md-input-container>
+        <input mdInput placeholder="Search by Director" #listFilter (keyup)="0" value="">
+    </md-input-container>
+    
+    <md-list>
+    <md-list-item *ngFor="let movie of movies | movieFilter:listFilter.value">
+        <md-icon md-list-icon class="mat-inactive">chevron_right</md-icon>
+        Title : {{movie.title}} Director: {{movie.director}}
+    </md-list-item>
+    </md-list>
+</md-card>
+
+<br>
+
+<md-card>
+    Super power of 2 is to 10 is: {{2 | exponentialStrength: 10}}
+</md-card>
+
+<br>
+
+<md-card>
+    <p>Today's Date is {{ currentDate | date:format }} and Time is {{currentDate  | date:'shortTime'}}</p>
+    <button (click)="toggleFormat()">Toggle Date Format (Short/Full)</button>
+</md-card>

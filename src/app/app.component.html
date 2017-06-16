@@ -1,10 +1,11 @@
-<h2>This is a Test App</h2>
-<input type="text" #listFilter (keyup)="0" />
-{{searchValue}}
-<ul>
-<li *ngFor="let movie of movies | movieFilter:listFilter.value">Title : {{movie.title}} Speaker Name: {{movie.director}} </li>
-</ul>
-Super power boost: {{2 | exponentialStrength: 10}}
-
-<button (click)="toggleFormat()">Toggle Data Format</button>
-<p>The hero's birthday is {{ currentDate | date:format }}</p>
+<md-toolbar color="secondary">
+  <div>Sample Angular 2 Application</div>
+  <nav>
+    <ul>
+      <li routerLink="/searchFilter">Search Filter</li>
+      <li routerLink="/form">Form with Angular 2 and Material</li>
+    </ul>
+  </nav>
+</md-toolbar>
+<br>
+<router-outlet></router-outlet>

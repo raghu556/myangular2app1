@@ -1,0 +1,7 @@
+Angular Material
+https://material.angular.io/
+
+Boostrap:
+npm install ngx-bootstrap --save
+npm install ngx-bootstrap bootstrap --save
+
