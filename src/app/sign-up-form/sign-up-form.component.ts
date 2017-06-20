@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {LocalstorageDataService} from './../localstorage-data.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up-form',
@@ -8,11 +8,7 @@ import {LocalstorageDataService} from './../localstorage-data.service';
   styleUrls: ['./sign-up-form.component.css']
 })
 
-export class SignUpFormComponent implements OnInit, OnDestroy {
-  ngOnInit() {
-  }
-  ngOnDestroy() {}
-
+export class SignUpFormComponent {
   usersObject = {};
   users: {};
   
@@ -28,7 +24,7 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
   status: string;
   comments: string;
 
-  constructor(public lsService: LocalstorageDataService){
+  constructor(public lsService: LocalstorageDataService,private router : Router){
     lsService.read("users") == null ? lsService.write('users', "{}") : "";
     this.users = lsService.read("users");
   }
@@ -61,11 +57,10 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
     this.usersObject[count].comments = this.comments;
 
     this.lsService.write("users",JSON.stringify(this.usersObject));
-    //localStorage.setItem('users',JSON.stringify(this.usersObject));
     
     //Displaying the Data in View/Console
     this.users = this.lsService.read("users");
-    //console.log(this.users);
     this.clearForm();
+    this.router.navigateByUrl('/searchFilter');
   }
 }
