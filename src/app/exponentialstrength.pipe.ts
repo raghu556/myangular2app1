@@ -11,7 +11,6 @@ export class ExponentialStrengthPipe implements PipeTransform {
 @Pipe({name: 'myFilter'})
 export class MyFilterPipe implements PipeTransform {
     transform(value: any, searchValue: string,criteriaValue: string): any {
-      console.log(criteriaValue);
        let filter = searchValue.toLocaleLowerCase(); 
        return filter ? value.filter(user=> user[criteriaValue].toLocaleLowerCase().indexOf(searchValue) != -1) : value; 
     } 

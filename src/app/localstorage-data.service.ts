@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class LocalstorageDataService {
-
+    editFlag: boolean = false;
   write(key: string, value: any) {
         if (value) {
             value = value;

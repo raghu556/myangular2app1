@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {LocalstorageDataService} from './../localstorage-data.service';
-import { Router, Params, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-sign-up-form',
@@ -9,26 +9,13 @@ import { Router, Params, ActivatedRoute } from '@angular/router';
 })
 
 export class SignUpFormComponent implements OnInit, OnDestroy {
-
   ngOnInit() {
-     this.activatedRoute.params.subscribe(
-      (params: Params) => {
-        this.name = params.name;
-        this.courses = (params.courses).split(',');
-        this.contactNo = params.contactNo;
-        this.email = params.email;
-        this.enquiryDate = params.enquiryDate;
-        this.qualification = params.qualification;
-        this.experience = params.experience;
-        this.status = params.status;
-        this.comments = params.comments;
-      }
-    ) 
   }
   ngOnDestroy() {}
 
   usersObject = {};
   users: {};
+  
   editUserData;
   //Model Data from View
   name: string;
@@ -41,8 +28,7 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
   status: string;
   comments: string;
 
-  constructor(private lsService: LocalstorageDataService,private activatedRoute: ActivatedRoute){
-    this.editUserData = {};
+  constructor(private lsService: LocalstorageDataService){
     lsService.read("users") == null ? lsService.write('users', "{}") : "";
     this.users = lsService.read("users");
   }
@@ -79,7 +65,7 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
     
     //Displaying the Data in View/Console
     this.users = this.lsService.read("users");
-    console.log(this.users);
+    //console.log(this.users);
     this.clearForm();
   }
 }

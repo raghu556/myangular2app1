@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>Signup Form</h1>
+    <h1>Modify User Data</h1>
     <form>
       <div class="form-group">
         <label for="name">Name</label>
@@ -47,7 +47,8 @@
         <label for="comments">Comments</label>
         <input type="text" [(ngModel)]="comments" class="form-control" id="comments" name="comments">
       </div>
-      <button type="submit" *ngIf="!this.lsService.editFlag" (click)="submitFunction()" class="btn btn-success">Submit</button>
+
+      <button type="button" *ngIf="this.lsService.editFlag" (click)="editFunction()" class="btn btn-success">Edit</button>
       <br><br>
       <!--<pre>{{users | json}}</pre>-->
 

@@ -1,7 +1,7 @@
 <md-card>
-    <md-card-title>Search By Director</md-card-title>
+    <md-card-title>Search</md-card-title>
     <md-input-container>
-        <input mdInput placeholder="Search by User" #listFilter (keyup)="0" value="">
+        <input mdInput placeholder="Search by " #listFilter (keyup)="0" value="">
     </md-input-container>
 
     <select #criteria (keyup)="0" name="criteria">
@@ -21,7 +21,7 @@
             <th>Experience</th>
             <th>Status</th>
         </tr>
-        <tr *ngFor="let user of users | myFilter:listFilter.value:criteria.value">
+        <tr *ngFor="let user of users | myFilter:listFilter.value:criteria.value; let i = index">
             <td>{{user.name}}</td>
             <td>{{user.courses}}</td>
             <td>{{user.contactNo}}</td>
@@ -30,7 +30,7 @@
             <td>{{user.qualification}}</td>
             <td>{{user.experience}}</td>
             <td>{{user.status}}</td>
-            <td><span [routerLink]="['/form', user]" (click) = "editForm(user)">Edit</span></td>
+            <td><span [routerLink]="['/form/edit', i]">Edit</span></td>
         </tr>
     </table>
 </md-card>

@@ -15,11 +15,12 @@ import {LocalstorageDataService} from './localstorage-data.service'  //Service
 import { AppComponent } from './app.component';
 import { SearchByexampleComponent } from './search-byexample/search-byexample.component';
 import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
+import { EditComponentComponent } from './edit-component/edit-component.component';
 
 const appRoutes: Routes = [
   { path: 'searchFilter', component: SearchByexampleComponent },
-  { path: 'form',      component: SignUpFormComponent },
-  { path: 'form/:userDetails',      component: SignUpFormComponent }
+  { path: 'form', component: SignUpFormComponent },
+  { path: 'form/edit/:id', component: EditComponentComponent }
 ];
 
 @NgModule({
@@ -28,7 +29,8 @@ const appRoutes: Routes = [
     ExponentialStrengthPipe,
     MyFilterPipe,
     SearchByexampleComponent,
-    SignUpFormComponent
+    SignUpFormComponent,
+    EditComponentComponent
   ],
   imports: [
     BrowserModule,

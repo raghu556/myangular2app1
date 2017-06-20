@@ -7,7 +7,7 @@ import {LocalstorageDataService} from './../localstorage-data.service';
   templateUrl: './search-byexample.component.html',
   styleUrls: ['./search-byexample.component.css']
 })
-export class SearchByexampleComponent implements OnInit {
+export class SearchByexampleComponent {
   users: any[];
 
   numbers = Observable.timer(10000);
@@ -23,11 +23,4 @@ export class SearchByexampleComponent implements OnInit {
     lsService.read("users") == null ? lsService.write('users', "{}") : "";
     this.users = Object.keys(lsService.read("users")).map(function (key) { return (lsService.read("users"))[key]; });
   }
-
-  editForm(user){
-    console.log(user);
-  }
-  ngOnInit() {
-  }
-
 }
