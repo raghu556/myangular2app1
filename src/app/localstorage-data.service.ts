@@ -5,7 +5,7 @@ export class LocalstorageDataService {
 
   write(key: string, value: any) {
         if (value) {
-            value = JSON.stringify(value);
+            value = value;
         }
         localStorage.setItem(key, value);
     }

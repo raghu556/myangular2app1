@@ -1,15 +1,38 @@
 <md-card>
     <md-card-title>Search By Director</md-card-title>
     <md-input-container>
-        <input mdInput placeholder="Search by Director" #listFilter (keyup)="0" value="">
+        <input mdInput placeholder="Search by User" #listFilter (keyup)="0" value="">
     </md-input-container>
-    
-    <md-list>
-    <md-list-item *ngFor="let movie of movies | movieFilter:listFilter.value">
-        <md-icon md-list-icon class="mat-inactive">chevron_right</md-icon>
-        Title : {{movie.title}} Director: {{movie.director}}
-    </md-list-item>
-    </md-list>
+
+    <select #criteria (keyup)="0" name="criteria">
+          <option value="name">Name</option>
+          <option value="status">Status</option>
+    </select>
+
+    <h3>List Of Users :</h3>
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Courses Taken</th>
+            <th>Contact Number</th>
+            <th>Email</th>
+            <th>Enquiry Date</th>
+            <th>Qualification</th>
+            <th>Experience</th>
+            <th>Status</th>
+        </tr>
+        <tr *ngFor="let user of users | myFilter:listFilter.value:criteria.value">
+            <td>{{user.name}}</td>
+            <td>{{user.courses}}</td>
+            <td>{{user.contactNo}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.enquiryDate}}</td>
+            <td>{{user.qualification}}</td>
+            <td>{{user.experience}}</td>
+            <td>{{user.status}}</td>
+            <td><span [routerLink]="['/form', user]" (click) = "editForm(user)">Edit</span></td>
+        </tr>
+    </table>
 </md-card>
 
 <br>

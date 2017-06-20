@@ -11,7 +11,7 @@ li {
 }
 li::after {
     content: '|';
-    padding: 5px;
+    margin: 5px;
   }
 li:last-child::after {
     content : '';

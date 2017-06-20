@@ -5,10 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '@angular/material';     //Angular Material Module
 
-import { ExponentialStrengthPipe,MovieFilterPipe } from './exponentialstrength.pipe';   //Custom Filter
+import { ExponentialStrengthPipe,MyFilterPipe } from './exponentialstrength.pipe';   //Custom Filter
 import { RouterModule, Routes } from '@angular/router';
 
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap'; //NG Boostrap
+
+import {LocalstorageDataService} from './localstorage-data.service'  //Service
 
 import { AppComponent } from './app.component';
 import { SearchByexampleComponent } from './search-byexample/search-byexample.component';
@@ -16,14 +18,15 @@ import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
 
 const appRoutes: Routes = [
   { path: 'searchFilter', component: SearchByexampleComponent },
-  { path: 'form',      component: SignUpFormComponent }
+  { path: 'form',      component: SignUpFormComponent },
+  { path: 'form/:userDetails',      component: SignUpFormComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     ExponentialStrengthPipe,
-    MovieFilterPipe,
+    MyFilterPipe,
     SearchByexampleComponent,
     SignUpFormComponent
   ],
@@ -35,7 +38,7 @@ const appRoutes: Routes = [
     NgbModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [LocalstorageDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

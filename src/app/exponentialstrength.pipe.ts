@@ -8,10 +8,11 @@ export class ExponentialStrengthPipe implements PipeTransform {
   }
 }
 
-@Pipe({name: 'movieFilter'})
-export class MovieFilterPipe implements PipeTransform {
-    transform(value: any, args: string): any {
-       let filter = args.toLocaleLowerCase(); 
-       return filter ? value.filter(movie=> movie.director.toLocaleLowerCase().indexOf(args) != -1) : value; 
+@Pipe({name: 'myFilter'})
+export class MyFilterPipe implements PipeTransform {
+    transform(value: any, searchValue: string,criteriaValue: string): any {
+      console.log(criteriaValue);
+       let filter = searchValue.toLocaleLowerCase(); 
+       return filter ? value.filter(user=> user[criteriaValue].toLocaleLowerCase().indexOf(searchValue) != -1) : value; 
     } 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
+import {LocalstorageDataService} from './../localstorage-data.service';
 
 @Component({
   selector: 'app-search-byexample',
@@ -7,13 +8,8 @@ import { Observable } from 'rxjs/Rx';
   styleUrls: ['./search-byexample.component.css']
 })
 export class SearchByexampleComponent implements OnInit {
-  movies = [ {title: 't1', director : 'Brian', description: 'talk 1'},
-            {title: 't2', director : 'Julie', description: 'talk 2'},
-            {title: 't3', director : 'Maria', description: 'talk 2'},
-            {title: 't4', director : 'Bacson', description: 'talk 2'},
-            {title: 't5', director : 'Test', description: 'talk 2'}
-          ];
-  
+  users: any[];
+
   numbers = Observable.timer(10000);
   currentDate = new Date();
   toggle = true;
@@ -23,8 +19,14 @@ export class SearchByexampleComponent implements OnInit {
     console.log(this.toggle);
   }
   
-  constructor() { }
+  constructor(private lsService: LocalstorageDataService) { 
+    lsService.read("users") == null ? lsService.write('users', "{}") : "";
+    this.users = Object.keys(lsService.read("users")).map(function (key) { return (lsService.read("users"))[key]; });
+  }
 
+  editForm(user){
+    console.log(user);
+  }
   ngOnInit() {
   }
 
