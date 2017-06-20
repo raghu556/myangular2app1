@@ -28,7 +28,7 @@ export class SignUpFormComponent implements OnInit, OnDestroy {
   status: string;
   comments: string;
 
-  constructor(private lsService: LocalstorageDataService){
+  constructor(public lsService: LocalstorageDataService){
     lsService.read("users") == null ? lsService.write('users', "{}") : "";
     this.users = lsService.read("users");
   }

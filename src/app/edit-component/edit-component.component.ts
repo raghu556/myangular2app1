@@ -20,7 +20,7 @@ export class EditComponentComponent implements OnInit {
   status: string;
   comments: string;
 
-  constructor(private activatedRoute: ActivatedRoute,private lsService: LocalstorageDataService, private router : Router) { }
+  constructor(private activatedRoute: ActivatedRoute,public lsService: LocalstorageDataService, private router : Router) { }
 
   ngOnInit() {
      this.activatedRoute.params.subscribe(
